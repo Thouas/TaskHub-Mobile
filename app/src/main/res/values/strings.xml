@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TaskHub</string>
+    <string name="email">Email</string>
+    <string name="background">背景</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+</resources>
