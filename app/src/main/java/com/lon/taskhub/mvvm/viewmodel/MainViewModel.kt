@@ -3,9 +3,6 @@ package com.lon.taskhub.mvvm.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.lon.frame.BaseViewModel
-import com.lon.net.RequestManger
-import com.lon.taskhub.adapter.TaskAdapter
-import com.lon.taskhub.api.Api
 import com.lon.taskhub.entity.TaskEntity
 import com.lon.taskhub.mvvm.model.MainModel
 import kotlinx.coroutines.Dispatchers
@@ -14,7 +11,6 @@ import kotlinx.coroutines.launch
 class MainViewModel : BaseViewModel<MainModel>() {
     private var _tasks = MutableLiveData<List<TaskEntity>>(emptyList())
     val tasks get() = _tasks
-    val adapter = MutableLiveData(TaskAdapter(tasks.value.orEmpty()))
     override fun initView() {
 
     }

@@ -6,6 +6,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface Api {
-    @GET("task/getTasksByUserId")
+    @GET("tasks/getTasksByUserId")
     suspend fun getTasksByUserId(@Query("userId") userId: String): BaseRespuest<List<TaskEntity>>
 }

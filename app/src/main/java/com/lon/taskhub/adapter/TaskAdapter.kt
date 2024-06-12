@@ -3,8 +3,6 @@ package com.lon.taskhub.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter4.BaseQuickAdapter
@@ -14,6 +12,7 @@ import kotlin.math.max
 
 class TaskAdapter(tasks: List<TaskEntity>) :
     BaseQuickAdapter<TaskEntity, TaskAdapter.TaskViewHolder>(tasks) {
+    private val itemSize = 5
 
     companion object {
         @JvmStatic
@@ -35,13 +34,9 @@ class TaskAdapter(tasks: List<TaskEntity>) :
         }
     }
 
-
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int, item: TaskEntity?) {
         holder.binding.task = item
         holder.binding.executePendingBindings()
-        val layoutParams = holder.itemView.layoutParams
-        layoutParams.height = (holder.binding.root.parent as ViewGroup).height / 3
-        holder.itemView.layoutParams = layoutParams
     }
 
     override fun onCreateViewHolder(
@@ -49,15 +44,23 @@ class TaskAdapter(tasks: List<TaskEntity>) :
         parent: ViewGroup,
         viewType: Int
     ): TaskViewHolder {
-        return TaskViewHolder(parent)
+        parent.height
+        return TaskViewHolder(parent,itemSize)
     }
 
     class TaskViewHolder(
         parent: ViewGroup,
+        size: Int,
         val binding: ItemTaskBinding = ItemTaskBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
-    ) : RecyclerView.ViewHolder(binding.root)
+    ) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            val layoutParams = itemView.layoutParams
+            layoutParams.height = parent.height / size
+            itemView.layoutParams = layoutParams
+        }
+    }
 }
 
 
