@@ -9,12 +9,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.blankj.utilcode.util.BarUtils
 import java.lang.reflect.ParameterizedType
 
 interface IView
 
 abstract class BaseActivity<V : ViewDataBinding, VM : IViewModel> : AppCompatActivity(), IView {
-    private lateinit var binding: V
+    protected lateinit var binding: V
     private lateinit var mViewModel: VM
 
     override fun onCreate(savedInstanceState: Bundle?) {

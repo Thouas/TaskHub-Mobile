@@ -1,5 +1,3 @@
-
-
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -55,6 +53,6 @@ dependencies {
     api(libs.kotlinx.coroutines.core)
     api(libs.baserecyclerviewadapterhelper4)
 
-
-    api(libs.utilcodex)
+    api(libs.refresh.layout.kernel)      //核心必须依赖
+    api(libs.refresh.header.classics)    //经典刷新头
 }

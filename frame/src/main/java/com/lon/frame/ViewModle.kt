@@ -6,8 +6,7 @@ import androidx.lifecycle.ViewModel
 import java.lang.reflect.ParameterizedType
 
 interface IViewModel : DefaultLifecycleObserver {
-    fun initView()
-    fun initData()
+    fun initData(owner: LifecycleOwner)
 }
 
 abstract class BaseViewModel<M : IModel> : ViewModel(), IViewModel {
@@ -21,6 +20,6 @@ abstract class BaseViewModel<M : IModel> : ViewModel(), IViewModel {
             .let { it as Class<M> }
             .getDeclaredConstructor()
             .newInstance()
-        initData()
+        initData(owner)
     }
 }
